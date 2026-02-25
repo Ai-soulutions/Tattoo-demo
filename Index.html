@@ -1,1 +1,753 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midnight Line Tattoo | Eugene, OR</title>
+  <meta name="description" content="Midnight Line Tattoo — Custom black & grey, fine line, and traditional tattoos in Eugene, Oregon. Request an appointment online." />
+  <meta name="theme-color" content="#0b0b0e" />
+  <style>
+    :root{
+      --bg:#0b0b0e;
+      --panel:#101018;
+      --panel2:#0f1016;
+      --text:#f4f4f7;
+      --muted:#b4b4c2;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --accent:#ff3b5c;
+      --accent2:#7c3aed;
+      --ok:#22c55e;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1100px 620px at 20% -10%, rgba(124,58,237,.26), transparent 55%),
+                  radial-gradient(900px 520px at 85% 0%, rgba(255,59,92,.22), transparent 58%),
+                  radial-gradient(900px 520px at 50% 120%, rgba(255,255,255,.05), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    .topbar{
+      position:sticky; top:0; z-index:60;
+      background: rgba(11,11,14,.68);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .row{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width: 220px;}
+    .mark{
+      width:38px; height:38px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(255,59,92,.22), rgba(124,58,237,.22));
+      box-shadow: 0 10px 26px rgba(0,0,0,.45);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .mark svg{width:22px; height:22px}
+    .brand .name{font-weight:900; letter-spacing:-.03em}
+    .brand .sub{font-size:12px; color:var(--muted); font-weight:700; margin-top:2px}
+    nav{display:flex; gap:10px; align-items:center;}
+    nav a{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:var(--muted);
+      font-weight:750;
+      font-size:13px;
+    }
+    nav a:hover{color:var(--text); border-color:rgba(255,255,255,.14); background: rgba(255,255,255,.04)}
+    .ctaRow{display:flex; gap:10px; align-items:center;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:850;
+      font-size:13px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.06);
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); box-shadow: 0 16px 36px rgba(0,0,0,.40)}
+    .btn.primary{
+      border-color: rgba(255,59,92,.35);
+      background: linear-gradient(180deg, rgba(255,59,92,1), rgba(219,39,119,1));
+    }
+    .btn.ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.16);
+      color: var(--text);
+    }
+    .hideMobile{display:inline-flex}
+    .hero{
+      padding: 46px 0 22px;
+      border-bottom:1px solid var(--line);
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .chip{
+      width:fit-content;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
+    h1{
+      margin:14px 0 12px;
+      font-size:46px;
+      line-height:1.02;
+      letter-spacing:-.04em;
+    }
+    .lead{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 62ch;
+    }
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 12px;}
+    .mini{
+      display:flex; gap:14px; flex-wrap:wrap;
+      color:var(--muted);
+      font-weight:750;
+      font-size:13px;
+      margin-top:10px;
+    }
+    .mini span{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .inner{padding:16px}
+    .statRow{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px}
+    .stat{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .stat .big{font-size:20px; font-weight:900; letter-spacing:-.02em}
+    .stat .small{margin-top:3px; font-size:12px; color:var(--muted); font-weight:750}
+    .divider{height:1px; background: var(--line); margin:14px 0}
+    .kv{display:flex; justify-content:space-between; gap:12px; font-size:13px; color:var(--muted); font-weight:750}
+    .kv strong{color:var(--text)}
+    .section{padding:44px 0}
+    .section h2{
+      margin:0 0 10px;
+      font-size:28px;
+      letter-spacing:-.03em;
+    }
+    .section p.sublead{
+      margin:0 0 18px;
+      color:var(--muted);
+      max-width: 76ch;
+    }
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch;}
+    .features{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;}
+    .feature{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    .feature .icon{
+      width:36px; height:36px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.25);
+      display:grid; place-items:center;
+      margin-bottom:10px;
+    }
+    .feature h3{margin:0 0 6px; font-size:14px}
+    .feature p{margin:0; color:var(--muted); font-size:13px}
+    .artists{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:12px;
+    }
+    .artist{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    .ph{
+      height:150px;
+      background:
+        radial-gradient(420px 200px at 30% 20%, rgba(255,59,92,.25), transparent 60%),
+        radial-gradient(420px 200px at 70% 0%, rgba(124,58,237,.25), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .artist .body{padding:14px}
+    .artist .tag{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+      margin-top:10px;
+    }
+    .artist h3{margin:0; font-size:15px; font-weight:900; letter-spacing:-.02em}
+    .artist p{margin:6px 0 0; color:var(--muted); font-size:13px}
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    .tile{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(420px 240px at 25% 20%, rgba(255,59,92,.22), transparent 60%),
+        radial-gradient(420px 240px at 85% 0%, rgba(124,58,237,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      aspect-ratio: 1 / 1;
+      position:relative;
+      overflow:hidden;
+    }
+    .tile::after{
+      content:"Replace with your photo";
+      position:absolute; left:12px; bottom:10px;
+      color: rgba(255,255,255,.70);
+      font-weight:850;
+      font-size:12px;
+      letter-spacing:-.01em;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.14);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    .booking{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    form{
+      display:grid;
+      gap:10px;
+    }
+    label{font-size:12px; color:var(--muted); font-weight:800}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.24);
+      color: var(--text);
+      outline:none;
+      font-weight:750;
+      font-size:14px;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input::placeholder, textarea::placeholder{color: rgba(180,180,194,.70)}
+    .formRow{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .note{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:750;
+      margin-top:6px;
+    }
+    .success{
+      display:none;
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(34,197,94,.25);
+      background: rgba(34,197,94,.12);
+      color: rgba(214,255,231,.96);
+      font-weight:850;
+      font-size:13px;
+    }
+    .contactGrid{display:grid; gap:10px}
+    .mapLink{color: rgba(255,255,255,.92)}
+    .fine{
+      color: rgba(180,180,194,.72);
+      font-size:12px;
+      font-weight:700;
+    }
+    footer{
+      border-top: 1px solid var(--line);
+      padding:24px 0;
+      background: rgba(0,0,0,.18);
+    }
+    .footerRow{
+      display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      nav{display:none}
+      h1{font-size:40px}
+      .features{grid-template-columns: repeat(2, 1fr)}
+      .artists{grid-template-columns: 1fr}
+      .gallery{grid-template-columns: repeat(2,1fr)}
+      .booking{grid-template-columns: 1fr}
+      .hideMobile{display:none}
+    }
+  </style>
+</head>
 
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 20.5 9.6 6.6c.6-1.2 2.2-1.2 2.8 0L21 20.5" stroke="rgba(255,255,255,.92)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7.6 16.2h8.8" stroke="rgba(255,59,92,.95)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="name">Midnight Line Tattoo</div>
+            <div class="sub">Eugene, Oregon</div>
+          </div>
+        </div>
+
+        <nav aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#artists">Artists</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#booking">Booking</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="ctaRow">
+          <a class="btn hideMobile ghost" href="#gallery">View Work</a>
+          <a class="btn primary" href="#booking">Request Appointment</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div>
+            <div class="chip">✨ Custom tattoos • Fine line • Black & Grey • Traditional</div>
+            <h1>Clean lines. Timeless pieces. Built to last.</h1>
+            <p class="lead">
+              Midnight Line Tattoo is a modern studio in Eugene specializing in custom tattoo work—designed with precision,
+              executed with care, and finished with detail.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#booking">Request Appointment</a>
+              <a class="btn" href="#artists">Meet the Artists</a>
+              <a class="btn ghost" href="#gallery">Browse Gallery</a>
+            </div>
+
+            <div class="mini">
+              <span>✅ Consultation-first</span>
+              <span>✅ Custom designs</span>
+              <span>✅ Aftercare guidance</span>
+              <span>✅ Deposit-based booking</span>
+            </div>
+
+            <p class="fine" style="margin-top:14px;">
+              Demo site template • Replace photos + details to match the real shop you’re pitching.
+            </p>
+          </div>
+
+          <aside class="card">
+            <div class="inner">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+                <div>
+                  <div style="font-weight:900; letter-spacing:-.02em;">Studio Info</div>
+                  <div style="color:var(--muted); font-weight:750; font-size:13px; margin-top:4px;">
+                    Walk-ins limited • Appointments preferred
+                  </div>
+                </div>
+                <div class="pill">⭐ 5.0 (demo)</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="kv"><span>Hours</span><strong>Tue–Sat • 11am–7pm</strong></div>
+              <div class="kv"><span>Phone</span><strong>(541) 555-0123</strong></div>
+              <div class="kv"><span>Address</span><strong>123 W 10th Ave, Eugene, OR</strong></div>
+
+              <div class="statRow">
+                <div class="stat">
+                  <div class="big">Fast booking</div>
+                  <div class="small">Request form + follow-up</div>
+                </div>
+                <div class="stat">
+                  <div class="big">Mobile-first</div>
+                  <div class="small">Looks great on phones</div>
+                </div>
+              </div>
+
+              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn primary" href="#booking">Book</a>
+                <a class="btn" href="#contact">Directions</a>
+              </div>
+
+              <p class="fine" style="margin-top:12px;">
+                Tip: swap the demo phone/address with the real shop’s info for each pitch.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + FEATURES -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2>About the Studio</h2>
+        <p class="sublead">
+          We focus on clean execution and respectful collaboration. Bring your idea, reference photos, and placement preferences—
+          we’ll guide the design and make sure you leave with a piece you’re proud to wear.
+        </p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="icon" aria-hidden="true">🖤</div>
+            <h3>Custom designs</h3>
+            <p>Original work tailored to your idea, placement, and style.</p>
+          </div>
+          <div class="feature">
+            <div class="icon" aria-hidden="true">🧼</div>
+            <h3>Clean & professional</h3>
+            <p>Appointment-first workflow and clear aftercare guidance.</p>
+          </div>
+          <div class="feature">
+            <div class="icon" aria-hidden="true">📸</div>
+            <h3>Portfolio-first</h3>
+            <p>Gallery focused layout that sells your work visually.</p>
+          </div>
+          <div class="feature">
+            <div class="icon" aria-hidden="true">📍</div>
+            <h3>Local visibility</h3>
+            <p>Maps + contact info that’s easy to find on mobile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTISTS -->
+    <section id="artists" class="section" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); background: rgba(255,255,255,.02);">
+      <div class="wrap">
+        <h2>Artists</h2>
+        <p class="sublead">Swap these placeholders with real artist photos, styles, and booking preferences.</p>
+
+        <div class="artists">
+          <div class="artist">
+            <div class="ph"></div>
+            <div class="body">
+              <h3>Raven • Black & Grey</h3>
+              <p>Realism, portrait detail, soft shading, high-contrast pieces.</p>
+              <div class="tag">Focus: realism</div>
+            </div>
+          </div>
+          <div class="artist">
+            <div class="ph"></div>
+            <div class="body">
+              <h3>Jax • Fine Line</h3>
+              <p>Minimal, clean lines, delicate scripts, small to medium pieces.</p>
+              <div class="tag">Focus: fine line</div>
+            </div>
+          </div>
+          <div class="artist">
+            <div class="ph"></div>
+            <div class="body">
+              <h3>Mara • Traditional</h3>
+              <p>Bold outlines, classic flash, vibrant accents, timeless style.</p>
+              <div class="tag">Focus: traditional</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <div class="wrap">
+        <h2>Gallery</h2>
+        <p class="sublead">
+          Replace these tiles with real tattoo photos. (On GitHub Pages, you can add images to a folder like <strong>/images</strong>
+          and swap the backgrounds below.)
+        </p>
+
+        <div class="gallery" aria-label="Tattoo gallery grid">
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking" class="section" style="border-top:1px solid var(--line); background: rgba(255,255,255,.02);">
+      <div class="wrap">
+        <h2>Request an Appointment</h2>
+        <p class="sublead">
+          This form is a demo (it doesn’t send anywhere yet). You can later connect it to email, Google Forms, Tidio, or a booking tool.
+        </p>
+
+        <div class="booking">
+          <div class="card">
+            <div class="inner">
+              <form id="bookingForm">
+                <div class="formRow">
+                  <div>
+                    <label for="name">Full name</label>
+                    <input id="name" name="name" placeholder="Jane Doe" required />
+                  </div>
+                  <div>
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" placeholder="(541) 555-0123" required />
+                  </div>
+                </div>
+
+                <div class="formRow">
+                  <div>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="jane@email.com" required />
+                  </div>
+                  <div>
+                    <label for="style">Style</label>
+                    <select id="style" name="style" required>
+                      <option value="" selected disabled>Select a style</option>
+                      <option>Black & Grey</option>
+                      <option>Fine Line</option>
+                      <option>Traditional</option>
+                      <option>Cover-up</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="formRow">
+                  <div>
+                    <label for="placement">Placement</label>
+                    <input id="placement" name="placement" placeholder="Forearm, upper arm, calf..." />
+                  </div>
+                  <div>
+                    <label for="size">Approx size</label>
+                    <input id="size" name="size" placeholder='Example: "3x4 inches"' />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="details">Tell us about your idea</label>
+                  <textarea id="details" name="details" placeholder="Describe your concept, references, and any important details..."></textarea>
+                </div>
+
+                <div class="formRow">
+                  <div>
+                    <label for="budget">Budget range</label>
+                    <select id="budget" name="budget">
+                      <option value="" selected disabled>Select a range</option>
+                      <option>$150–$300</option>
+                      <option>$300–$600</option>
+                      <option>$600–$1,000</option>
+                      <option>$1,000+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="timing">When are you looking to book?</label>
+                    <select id="timing" name="timing">
+                      <option value="" selected disabled>Select timing</option>
+                      <option>ASAP</option>
+                      <option>Within 2 weeks</option>
+                      <option>Within 1 month</option>
+                      <option>Just researching</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button class="btn primary" type="submit">Submit Request</button>
+                <div class="success" id="successMsg">✅ Request received (demo). Connect this form to email/booking later.</div>
+                <div class="note">By submitting, you agree to be contacted about your request. Deposits may be required for booking.</div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="inner">
+              <div class="pill">Booking tips that reduce no-shows</div>
+              <div style="margin-top:12px;" class="feature">
+                <h3 style="margin:0 0 6px;">What to include when booking</h3>
+                <p style="margin:0; color:var(--muted); font-size:13px;">
+                  • Reference photos (2–5)<br/>
+                  • Placement + approximate size<br/>
+                  • Skin tone / existing tattoos in area<br/>
+                  • Preferred days/times<br/>
+                  • Any allergies/sensitivities
+                </p>
+              </div>
+
+              <div style="margin-top:12px;" class="feature">
+                <h3 style="margin:0 0 6px;">Aftercare basics</h3>
+                <p style="margin:0; color:var(--muted); font-size:13px;">
+                  Keep it clean, moisturize lightly, avoid soaking, and protect from sun. Full instructions provided at appointment.
+                </p>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="kv"><span>Instagram</span><strong>@midnightlinetattoo</strong></div>
+              <div class="kv"><span>Email</span><strong>booking@midnightline.tattoo</strong></div>
+              <div class="kv"><span>Deposits</span><strong>Required for most bookings</strong></div>
+
+              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn" href="#gallery">See Work</a>
+                <a class="btn ghost" href="#contact">Contact</a>
+              </div>
+
+              <p class="fine" style="margin-top:12px;">
+                For client pitches: swap these handles/emails with the shop’s real info.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p class="sublead">Add real shop address + phone + hours here. Keep it simple and easy to tap on mobile.</p>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="inner contactGrid">
+              <div class="kv"><span>Phone</span><strong><a href="tel:+15415550123">(541) 555-0123</a></strong></div>
+              <div class="kv"><span>Hours</span><strong>Tue–Sat • 11am–7pm</strong></div>
+              <div class="kv"><span>Address</span><strong>123 W 10th Ave, Eugene, OR</strong></div>
+              <div class="kv"><span>Directions</span>
+                <strong>
+                  <a class="mapLink" target="_blank" rel="noreferrer"
+                     href="https://www.google.com/maps/search/?api=1&query=123%20W%2010th%20Ave%2C%20Eugene%2C%20OR">
+                    Open in Google Maps
+                  </a>
+                </strong>
+              </div>
+
+              <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn primary" href="#booking">Request Appointment</a>
+                <a class="btn" href="#gallery">Gallery</a>
+              </div>
+
+              <p class="fine" style="margin-top:10px;">
+                Demo site. Replace with real shop info before sending to a prospect.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="inner">
+              <div class="pill">FAQ</div>
+
+              <div style="margin-top:12px;" class="feature">
+                <h3 style="margin:0 0 6px;">Do you take walk-ins?</h3>
+                <p style="margin:0; color:var(--muted); font-size:13px;">
+                  Limited walk-ins based on availability. Appointments preferred for custom work.
+                </p>
+              </div>
+
+              <div style="margin-top:12px;" class="feature">
+                <h3 style="margin:0 0 6px;">Do you do cover-ups?</h3>
+                <p style="margin:0; color:var(--muted); font-size:13px;">
+                  Yes. Include a photo of the existing tattoo and what you want to cover with.
+                </p>
+              </div>
+
+              <div style="margin-top:12px;" class="feature">
+                <h3 style="margin:0 0 6px;">How do deposits work?</h3>
+                <p style="margin:0; color:var(--muted); font-size:13px;">
+                  Deposits reserve time and are applied toward your session (demo text—adjust to match shop policy).
+                </p>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="fine">
+                Want this to look even more legit? Add 8–20 real photos in the gallery and artist headshots.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footerRow">
+        <div class="fine">
+          © <span id="year"></span> Midnight Line Tattoo • Eugene, OR
+        </div>
+        <div class="pill">Demo template for client pitches</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Demo form handler (does not submit anywhere)
+    const form = document.getElementById("bookingForm");
+    const success = document.getElementById("successMsg");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      success.style.display = "block";
+      form.querySelector("button[type='submit']").textContent = "Submitted (demo)";
+      form.querySelector("button[type='submit']").disabled = true;
+    });
+  </script>
+</body>
+</html>
