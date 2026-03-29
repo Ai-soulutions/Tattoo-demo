@@ -3,59 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tattoo Demo - Professional Tattoo Designs">
-    <meta name="keywords" content="tattoo, designs, art">
-    <meta name="author" content="Ai-soulutions">
-    <link rel="stylesheet" href="styles.css">
-    <title>Tattoo Demo</title>
-    <script src="script.js" defer></script>
+    <meta name="description" content="Midnight Line Tattoo - Your local tattoo studio">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Tattoo Demo",
-        "url": "http://www.example.com"
-    }
+      {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Midnight Line Tattoo",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Tattoo Ave",
+          "addressLocality": "Tattoo City",
+          "addressRegion": "TC",
+          "postalCode": "12345",
+          "addressCountry": "US"
+        },
+        "telephone": "+1-123-456-7890",
+        "openingHours": "Mo-Fr 10:00-18:00",
+        "image": "logo.png"
+      }
     </script>
+    <title>Midnight Line Tattoo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="dark-theme">
+<body>
     <header>
-        <h1>Tattoo Demo</h1>
-        <nav>
-            <div class="hamburger-menu" onclick="toggleMenu()">
-                &#9776;
-            </div>
-            <ul id="nav-links" class="hidden">
-                <li><a href="#home" aria-label="Go to home section">Home</a></li>
-                <li><a href="#about" aria-label="Go to about section">About</a></li>
-                <li><a href="#portfolio" aria-label="Go to portfolio section">Portfolio</a></li>
-                <li><a href="#contact" aria-label="Go to contact section">Contact</a></li>
+        <nav aria-label="Main Navigation">
+            <button class="hamburger" aria-label="Toggle Navigation" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul id="nav-links" class="nav-links" role="menu">
+                <li role="menuitem"><a href="#about">About</a></li>
+                <li role="menuitem"><a href="#services">Services</a></li>
+                <li role="menuitem"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="about">
-            <h2>About Us</h2>
-            <p>Welcome to our tattoo demo site where we showcase our professional tattoo designs.</p>
+            <h1>Welcome to Midnight Line Tattoo</h1>
+            <p>Your trusted local tattoo studio.</p>
         </section>
-        <section id="portfolio">
-            <h2>Our Portfolio</h2>
-            <img src="tattoo1.jpg" alt="Tattoo Design 1" loading="lazy">
-            <img src="tattoo2.jpg" alt="Tattoo Design 2" loading="lazy">
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Tattooing</li>
+                <li>Consultations</li>
+                <li>Cover-ups</li>
+            </ul>
         </section>
         <section id="contact">
             <h2>Contact Us</h2>
-            <form onsubmit="return validateForm()">
+            <form id="contact-form" aria-label="Contact Form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required aria-required="true">
+                <span id="name-error" class="error"></span>
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required aria-required="true">
+                <span id="email-error" class="error"></span>
+
                 <button type="submit">Submit</button>
+                <div id="success-message" class="success hidden">Thank you for contacting us!</div>
             </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 Ai-soulutions. All rights reserved.</p>
+        <p>&copy; 2026 Midnight Line Tattoo. All Rights Reserved.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav-links');
+            nav.classList.toggle('active');
+        }
+
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+
+            nameError.textContent = '';
+            emailError.textContent = '';
+
+            if (name.value.trim() === '') {
+                nameError.textContent = 'Name is required.';
+            } else if (email.value.trim() === '') {
+                emailError.textContent = 'Email is required.';
+            } else {
+                document.getElementById('success-message').classList.remove('hidden');
+                form.reset();
+            }
+        }
+    </script>
 </body>
 </html>
